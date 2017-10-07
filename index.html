@@ -20,28 +20,21 @@
 
             function handleTap () {
 
-                console.log('tap!');
-                console.log(Date.now());
-
                 if (taps.length < sampleWindow + 1)
-                    taps.push(Date.now());
-                else {
+                    return taps.push(Date.now());
 
-                    let deltaMilliseconds = taps[sampleWindow] - taps[0];
-                    console.log('deltaMilliseconds: ', deltaMilliseconds);
-                    console.log('taps:', taps);
+                let deltaMilliseconds = taps[sampleWindow] - taps[0];
+                let deltaSeconds = deltaMilliseconds / 1000;
+                let tapsPerMinute = (60 * sampleWindow)/deltaSeconds;
 
-                    let deltaSeconds = deltaMilliseconds / 1000;
-                    console.log('deltaSeconds: ', deltaSeconds);
+                taps.splice(0, taps.length);
 
-                    let tapsPerMinute = (60 * sampleWindow)/deltaSeconds;
-                    console.log('tapsPerMinute:', tapsPerMinute);
+                writeToDOM(document.getElementById('bpm'), Math.floor(tapsPerMinute));
 
-                    taps = [];
+            }
 
-                    document.getElementById('bpm').innerHTML = Math.floor(tapsPerMinute);
-
-                }
+            function writeToDOM(el, bpm) {
+                el.innerHTML = bpm;
             }
 
         </script>
