@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf8" />
+    </head>
+    <body>
+
+        <h1>Times:</h1>
+        <div style="width: 400px;" id="times"></div>
+
+        <h1>BPM:</h1>
+        <div><span id="bpm"></span> beats per minute</div>
+
+        <script type="text/javascript">
+
+            let taps = [ ];
+            const sampleWindow = 2; 
+
+            document.addEventListener('keydown', handleTap);
+
+            function handleTap () {
+
+                console.log('tap!');
+                console.log(Date.now());
+
+                if (taps.length < sampleWindow + 1)
+                    taps.push(Date.now());
+                else {
+
+                    let deltaMilliseconds = taps[sampleWindow] - taps[0];
+                    console.log('deltaMilliseconds: ', deltaMilliseconds);
+                    console.log('taps:', taps);
+
+                    let deltaSeconds = deltaMilliseconds / 1000;
+                    console.log('deltaSeconds: ', deltaSeconds);
+
+                    let tapsPerMinute = (60 * sampleWindow)/deltaSeconds;
+                    console.log('tapsPerMinute:', tapsPerMinute);
+
+                    taps = [];
+
+                    document.getElementById('bpm').innerHTML = Math.floor(tapsPerMinute);
+
+                }
+            }
+
+        </script>
+    </body>
+</html>
+
+<!--
+    tap once, get a timestamp. 
+    tap twice or more, get timestamp, then intervals. 
+-->
