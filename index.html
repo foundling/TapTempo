@@ -1,43 +1,35 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="utf8" />
-    </head>
+        <meta 
+            charset="utf-8"
+            name=viewport 
+            content="width=device-width,initial-scale=1,user-scalable=no"
+            name=apple-mobile-web-app-capable 
+            content=yes>
+        <link 
+            rel="stylesheet" 
+            type="text/css" 
+            href="style.css"> </head> 
     <body>
-
-        <h1>Times:</h1>
-        <div style="width: 400px;" id="times"></div>
-
-        <h1>BPM:</h1>
-        <div><span id="bpm"></span> beats per minute</div>
-
-        <script type="text/javascript">
-
-            let taps = [ ];
-            const sampleWindow = 2; 
-
-            document.addEventListener('keydown', handleTap);
-
-            function handleTap () {
-
-                if (taps.length < sampleWindow + 1)
-                    return taps.push(Date.now());
-
-                let deltaMilliseconds = taps[sampleWindow] - taps[0];
-                let deltaSeconds = deltaMilliseconds / 1000;
-                let tapsPerMinute = (60 * sampleWindow)/deltaSeconds;
-
-                taps.splice(0, taps.length);
-
-                writeToDOM(document.getElementById('bpm'), Math.floor(tapsPerMinute));
-
-            }
-
-            function writeToDOM(el, bpm) {
-                el.innerHTML = bpm;
-            }
-
-        </script>
+        <img id="volume-level-icon" src="svg/v1.svg" alt="volume button"></img>
+        <div id="tap-area">
+            <h1>
+                <span class="bpm-label">BPM</span>
+                <span class="bpm-level" id="bpm">0</span>
+            </h1>
+        </div>
+        <div id="tap-controls">
+                <span>Sample Window:</span>
+                <h2 id="sample-window-level"></h2>
+            <input 
+                id="sample-window-slider" 
+                type="range" 
+                min="1" 
+                max="10" />
+        </div>
+        <script type="text/javascript" src="script.js"></script>
     </body>
 </html>
+
 

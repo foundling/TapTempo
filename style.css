@@ -1,0 +1,81 @@
+html, body {
+    height: 100%;
+    width: 100%;
+    font-family: sans-serif, Arial;
+}
+
+html, body, body * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#tap-area {
+    height: 90%;
+    background: aqua;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.2s ease-in-out background;
+
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none;  /* Safari */
+       -moz-user-select: none;  /* Firefox */
+        -ms-user-select: none;  /* Internet Explorer/Edge */
+            user-select: none;  
+}
+
+#tap-area.tap-bg {
+    opacity: 0.5;
+}
+
+#tap-area > h1 {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+h1 > .bpm-label {
+    background: white;
+    padding: 2px;
+    margin-right: 10px;
+}
+
+h1 > .bpm-area {
+    background: transparent;
+}
+
+#tap-controls {
+    padding: 1% 5%;
+    height: 10%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#tap-controls > #sample-window-level {
+    width: 10%;
+    text-align: center;
+    margin-right: auto;
+}
+#tap-controls > #sample-window-slider {
+    width: 50%;
+    margin-left: auto;
+}
+#tap-controls > #sample-window-level
+#tap-controls > #sample-window-slider {
+    height: 100%;
+}
+
+img#volume-level-icon {
+    display: inline-block;
+    position: absolute;
+    text-align: center;
+    background: whitesmoke;
+    top: 1%;
+    right: 5%;
+    color: gray;
+    font-size: 3em;
+    width:10%;
+    padding: 2%;
+}
