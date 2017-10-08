@@ -28,13 +28,13 @@
         sampleWindow = initSampleWindowLevel || sampleWindowSlider.value; 
         sampleWindowSlider.value = sampleWindow;
         sampleWindowLevel.innerHTML = sampleWindow; 
-        audioIcon.src =  `svg/v${volumeLevel}.svg`;
+        audioIcon.src =  `assets/svg/v${volumeLevel}.svg`;
         bpmEl.innerHTML = 0; 
     }
 
     function increaseVolume() {
         volumeLevel = (volumeLevel + 1) % volumeRange;
-        audioIcon.src = `svg/v${volumeLevel}.svg`;
+        audioIcon.src = `assets/svg/v${volumeLevel}.svg`;
     }
 
     function handleTap() {
@@ -98,7 +98,7 @@
         gain.connect(ctx.destination);
         osc.start();
         gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.05);
-        osc.stop(ctx.currentTime + 0.1);
+        osc.stop(ctx.currentTime + 0.06);
 
     }
 
