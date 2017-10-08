@@ -15,13 +15,21 @@
     const audioIcon = document.getElementById('volume-level-icon');
     const ctx = new AudioContext;
 
-    //tapArea.addEventListener('keydown', handleTap);
-    tapArea.addEventListener('touchstart', handleTap);
-    //tapArea.addEventListener('click', handleTap);
+    tapArea.addEventListener('keydown', handleTap);
+    tapArea.addEventListener('touchstart', touchWrapper(handleTap));
+    tapArea.addEventListener('click', handleTap);
     sampleWindowSlider.addEventListener('change', handleSampleWindowChange); 
 
-    audioIcon.addEventListener('touchstart', increaseVolume);
+    audioIcon.addEventListener('touchstart', touchWrapper(increaseVolume));
+    audioIcon.addEventListener('click', increaseVolume);
 
+
+    function touchWrapper(fn) {
+        return function(e) {
+            e.preventDefault();
+            fn();
+        }
+    }
 
     function init(initSampleWindowLevel) {
         taps = [];
