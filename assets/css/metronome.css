@@ -1,0 +1,39 @@
+#metronome-area {
+    height: 90%;
+    width: 100%;
+    background: aqua;
+}
+#metronome-controls {
+    height: 10%;
+    width: 100%;
+    background:whitesmoke;
+} 
+
+
+.metronome-container {
+    width: 2%;
+    height: 70%;
+    position: absolute;
+    bottom: 10%;
+    left: 48%;
+}
+
+.metronome-top {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background: yellow;
+}
+
+#metronome-shaft {
+    width: 100%;
+    height: 100%;
+    background: gray;
+}
+
+.rotate-cw {
+    transform: rotate(20deg);
+}
+.rotate-ccw {
+}
+
