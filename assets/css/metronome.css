@@ -7,15 +7,17 @@
     height: 10%;
     width: 100%;
     background:whitesmoke;
+    position: absolute;
+    bottom: 0px;
 } 
 
 
 .metronome-container {
     width: 2%;
-    height: 70%;
+    height: 500px;
     position: absolute;
-    bottom: 10%;
-    left: 48%;
+    bottom: calc(10% - 250px);
+    left: 49%;
 }
 
 .metronome-top {
@@ -29,10 +31,14 @@
     width: 100%;
     height: 100%;
     background: gray;
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
 }
 
 .rotate-cw {
-    transform: rotate(20deg);
+    transform: rotate(0deg);
+    /*
+    */
 }
 .rotate-ccw {
 }

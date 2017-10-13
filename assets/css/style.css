@@ -10,6 +10,11 @@ html, body, body * {
     box-sizing: border-box;
 }
 
+body {
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
 #tap-area {
     height: 90%;
     background: aqua;

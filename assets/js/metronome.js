@@ -1,27 +1,26 @@
 const AudioContext = window.AudioContext;
+const ctx = new AudioContext();
 const requestAnimationFrame = window.requestAnimationFrame ||
                               window.mozRequestAnimationFrame ||
                               window.webkitRequestAnimationFrame ||
                               window.msRequestAnimationFrame;   
-
-const ctx = new AudioContext();
-const volumeLevel = 0.5;
 const metronomeShaft = document.getElementById('metronome-shaft');
 
-let degree = 130; 
-let degreeStep = 1;
+let volumeLevel = 0.5;
+let degree = 0; 
+let degreeStep = 5;
 let start = 0;
-let interval = 10;
 let clockwise = true; 
 let tempo;
 let animationFrameHandle;
-let going = false;
+let on = false;
 
 document.body.addEventListener('click', toggleAnimationOnOff);
 
-function toggleAnimationOnOff() {
-    going = !going;
-    if (!going)
+function toggleAnimationOnOff(event) {
+
+    on = !on;
+    if (!on)
         cancelAnimationFrame(animationFrameHandle);
     else 
         animationFrameHandle = requestAnimationFrame(moveClockHand);
@@ -29,16 +28,14 @@ function toggleAnimationOnOff() {
 
 function moveClockHand(timestamp) {
 
-    let progress;
     let direction
 
-    if (!start) start = timestamp;
-    progress = timestamp - start;
+    if (!start) 
+        start = timestamp;
 
-    if (progress > 1000) {
-        playClick();
+    if (degree > 53.1 || degree < -53.1) {
         clockwise = !clockwise;
-        start = null;
+        console.log(timestamp);
     }
 
     direction = clockwise ? 1 : -1;
@@ -49,7 +46,6 @@ function moveClockHand(timestamp) {
     animationFrameHandle = requestAnimationFrame(moveClockHand);
 
 };
-
 
 function playClick() {
 
